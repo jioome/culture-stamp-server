@@ -1,6 +1,13 @@
 # Culture-Stamp
-## Introduce
+## 소개
 어떤 서비스인지 왜 만들었는지 
+## 핵심 기능
+## 기술 스택
+- Spring Boot 2.7.4
+- Spring Data JPA
+- Spring Security
+- Mysql
+- Java 17
 ## System Architecture
 만들기
 ## ERD
@@ -10,7 +17,7 @@ https://www.erdcloud.com/d/m8boRe8K52ZSq7uua -> 정하기
 ![culturestamp](https://user-images.githubusercontent.com/64303211/194745216-5cbaef59-4aef-4636-9e22-4107c5d89a3f.jpeg)
 
 
-
+## 업데이트 내역
 
 ## CONVENTION
 
