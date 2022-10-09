@@ -1,6 +1,8 @@
 # Culture-Stamp
 ## Introduce
+어떤 서비스인지 왜 만들었는지 
 ## System Architecture
+만들기
 ## ERD
 https://www.erdcloud.com/d/m8boRe8K52ZSq7uua -> 정하기
 ## Diagram
