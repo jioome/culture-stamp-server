@@ -1,4 +1,4 @@
-# Culture-Stamp
+# 📕 Culture-Stamp
 ## 소개
 어떤 서비스인지 왜 만들었는지 
 ## 핵심 기능
