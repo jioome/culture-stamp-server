@@ -2,7 +2,8 @@
 
 ## Diagram
 
-![Culture Stamp 다이어그램 drawio](https://user-images.githubusercontent.com/64303211/194744882-58344493-b321-480a-a161-d3e6e1c82653.png)
+![culturestamp](https://user-images.githubusercontent.com/64303211/194745216-5cbaef59-4aef-4636-9e22-4107c5d89a3f.jpeg)
+
 
 
 
