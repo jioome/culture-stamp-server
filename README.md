@@ -21,7 +21,7 @@ https://www.erdcloud.com/d/m8boRe8K52ZSq7uua -> 정하기
 
 
 ## 업데이트 내역
-
+1. ..
 ## CONVENTION
 
 | 태그                  | 설명                                                                      |
