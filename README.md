@@ -1,10 +1,12 @@
 # Culture-Stamp
 
+## Diagram
+
+![Culture Stamp 다이어그램 drawio](https://user-images.githubusercontent.com/64303211/194744882-58344493-b321-480a-a161-d3e6e1c82653.png)
 
 
 
-
-## ✍️ CONVENTION
+## CONVENTION
 
 | 태그                  | 설명                                                                      |
 | --------------------- | ------------------------------------------------------------------------- |
