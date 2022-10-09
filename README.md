@@ -2,6 +2,9 @@
 ## 소개
 어떤 서비스인지 왜 만들었는지 
 ## 핵심 기능
+1. 리뷰 작성
+2. TODO
+등등
 ## 기술 스택
 - Spring Boot 2.7.4
 - Spring Data JPA
