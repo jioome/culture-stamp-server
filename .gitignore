@@ -1,0 +1,20 @@
+# .gitignore added by 후플푸프 on 16th October
+# 인텔리제이에서 자동생성되는 파일들 git 업로드 방지
+.gradle
+.idea
+
+# resources/*.properties git 업로드 방지
+src/main/resources/application.properties
+src/main/resources/application-oauth.properties
+/.gradle/7.5/executionHistory/executionHistory.bin
+/.gradle/7.5/executionHistory/executionHistory.lock
+/.gradle/7.5/fileHashes/fileHashes.bin
+/.gradle/7.5/fileHashes/fileHashes.lock
+/.gradle/7.5/fileHashes/resourceHashesCache.bin
+/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+/.gradle/buildOutputCleanup/outputFiles.bin
+/.gradle/file-system.probe
+/.idea/.gitignore
+/build/resources/main/application.properties
+/build/resources/main/application-oauth.properties
+/build/tmp/compileJava/previous-compilation-data.bin
