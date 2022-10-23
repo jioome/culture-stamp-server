@@ -26,12 +26,19 @@ public class Category {
 	@Column(name = "review_count")
 	private String reviewCount;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name="user_id")
-	// private User user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public Category() {
 
+	}
+
+	public Category(Long categoryId, String categoryName, String reviewCount, User user) {
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.reviewCount = reviewCount;
+		this.user = user;
 	}
 
 	public Category(Long categoryId, String categoryName, String reviewCount) {
@@ -67,5 +74,13 @@ public class Category {
 
 	public void setReviewCount(String reviewCount) {
 		this.reviewCount = reviewCount;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
