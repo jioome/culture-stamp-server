@@ -1,7 +1,7 @@
 package com.culturestamp.back.service;
 
-import com.culturestamp.back.entity.User;
+import com.culturestamp.back.dto.UserResponse;
 
 public interface UserService {
-    void insertUser(User user);
+    public UserResponse getUserById(Long userId);
 }
