@@ -1,5 +1,6 @@
 package com.culturestamp.back.controller;
 
+
 import com.culturestamp.back.dto.UserResponse;
 import com.culturestamp.back.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,5 @@ public class UserController {
         System.out.println(userServiceImpl.getUserById(Long.valueOf(userId)));
         return userServiceImpl.getUserById(Long.valueOf(userId));
     }
-
 
 }

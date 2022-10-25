@@ -41,9 +41,9 @@ public class User extends BaseTimeEntity implements Serializable {
     // TODO: 변경 설명
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginAt;
-
     @Column
     private int failCount;
+
 
     @Builder
     public User(String loginId, String email, String password, Role role, int failCount) {
