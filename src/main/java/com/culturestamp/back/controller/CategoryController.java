@@ -19,6 +19,7 @@ import com.culturestamp.back.service.impl.CategoryServiceImpl;
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController {
+
 	@Autowired
 	private CategoryServiceImpl categoryServiceImpl;
 

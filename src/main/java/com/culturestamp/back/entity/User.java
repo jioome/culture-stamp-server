@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,10 +38,24 @@ public class User extends BaseTimeEntity implements Serializable {
     @Column(nullable = false)
     private Role role;
 
-    @Column
-    private LocalDateTime lastLoginAt;
-
+    // TODO: 변경 설명
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLoginAt;
     @Column
     private int failCount;
+
+
+    @Builder
+    public User(String loginId, String email, String password, Role role, int failCount) {
+        this.loginId = loginId;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.failCount = failCount;
+    }
+
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
 }
