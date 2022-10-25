@@ -16,6 +16,7 @@ public class UserController {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
+    //Git Action for test
     // TODO: final 문의
     @GetMapping("/{userId}")
     public UserResponse getUserById(@PathVariable String userId) {
