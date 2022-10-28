@@ -1,4 +1,7 @@
 package com.culturestamp.back.repository;
 
-public class ReviewRepository {
+import com.culturestamp.back.entity.Review;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 }
