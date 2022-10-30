@@ -16,33 +16,37 @@ import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.service.CategoryService;
 import com.culturestamp.back.service.impl.CategoryServiceImpl;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/category")
 public class CategoryController {
 
-	@Autowired
-	private CategoryServiceImpl categoryServiceImpl;
+	private final CategoryService service;
 
 	@PostMapping()
 	public CategoryResponse categoryAdd(@RequestBody CategoryRequest categoryRequest){
-		final Category category = categoryServiceImpl.addCategory(categoryRequest);
+		Category category = service.addCategory(categoryRequest);
 		return new CategoryResponse(category);
 	}
 
 	@GetMapping("/{categoryId}")
 	public CategoryResponse categoryDetails(@PathVariable(name = "categoryId") Long categoryId) throws Exception {
-		final Category category =  categoryServiceImpl.findCategory(categoryId);
+		Category category =  service.findCategory(categoryId);
 		return new CategoryResponse(category);
 	}
 
 	@DeleteMapping("/{categoryId}")
 	public void categoryRemove(@PathVariable Long categoryId){
-		categoryServiceImpl.removeCategory(categoryId);
+		service.removeCategory(categoryId);
 	}
 
 	@PatchMapping("/{categoryId}")
 	public CategoryResponse categoryModify(@PathVariable Long categoryId ,@RequestBody CategoryRequest categoryRequest) throws Exception {
-		final Category category =  categoryServiceImpl.modifyCategory(categoryId,categoryRequest);
+		final Category category =  service.modifyCategory(categoryId,categoryRequest);
 		return new CategoryResponse(category);
 	}
 

@@ -23,4 +23,5 @@ public class UserServiceImpl implements UserService {
                                     .orElseThrow(() -> new IllegalStateException("User ID에 해당하는 사용자가 없습니다."));
         return new UserResponse(user);
     }
+
 }
