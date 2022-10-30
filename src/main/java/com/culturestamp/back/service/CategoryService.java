@@ -7,4 +7,6 @@ public interface CategoryService {
 	Category addCategory(CategoryRequest categoryRequest);
 	Category findCategory(Long categoryId);
 	void removeCategory(Long categoryId);
+
+	Category modifyCategory(Long categoryId, CategoryRequest categoryRequest) throws Exception;
 }
