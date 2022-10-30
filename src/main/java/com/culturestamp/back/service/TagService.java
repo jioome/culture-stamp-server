@@ -1,4 +1,4 @@
 package com.culturestamp.back.service;
 
-public interface ReviewSerivce {
+public interface TagService {
 }
