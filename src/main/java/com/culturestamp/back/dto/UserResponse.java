@@ -23,7 +23,7 @@ public class UserResponse {
 	private int failCount;
 
 	@Builder
-	public UserResponse(User user) {
+	public UserResponse(UserServiceResponse user) {
 		this.nickname = user.getNickname();
 		this.loginId = user.getLoginId();
 		this.email = user.getEmail();
