@@ -1,20 +1,20 @@
 package com.culturestamp.back.dto;
 
-import com.culturestamp.back.controller.request.ReviewRequest;
-import com.culturestamp.back.entity.Review;
+import java.util.Date;
+
 import com.culturestamp.back.entity.User;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserResponse {
+public class UserServiceResponse {
 
+	private Long userId;
 	private String nickname;
 	private String loginId;
 	private String email;
@@ -23,7 +23,8 @@ public class UserResponse {
 	private int failCount;
 
 	@Builder
-	public UserResponse(UserServiceResponse user) {
+	public UserServiceResponse(User user) {
+		this.userId = user.getUserId();
 		this.nickname = user.getNickname();
 		this.loginId = user.getLoginId();
 		this.email = user.getEmail();
@@ -31,6 +32,5 @@ public class UserResponse {
 		this.lastLoginAt = user.getLastLoginAt();
 		this.failCount = user.getFailCount();
 	}
-
-
 }
+
