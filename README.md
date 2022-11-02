@@ -15,8 +15,9 @@
 - Java 17
 ## System Architecture
 만들기
-## ERD
-https://www.erdcloud.com/d/m8boRe8K52ZSq7uua -> 정하기
+## [ERD](https://www.erdcloud.com/d/m8boRe8K52ZSq7uua)
+![Culture Stamp](https://user-images.githubusercontent.com/64303211/199386771-13be3acb-a7c1-4db1-80fb-864fa1add3c5.png)
+
 ## Diagram
 
 ![culturestamp](https://user-images.githubusercontent.com/64303211/194745216-5cbaef59-4aef-4636-9e22-4107c5d89a3f.jpeg)
