@@ -25,6 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -41,6 +43,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 public class ReviewServiceTest {
@@ -98,7 +102,7 @@ public class ReviewServiceTest {
 
     @Test
     void test리뷰_기본_등록_서비스() throws Exception {
-        //given
+        // given
         ReviewRequest request = ReviewRequest.builder()
                                 .category(review.getCategory())
                                 .user(review.getUser())
@@ -112,11 +116,23 @@ public class ReviewServiceTest {
                                 .build();
 
 
-        //when
+        // when
         service.addReview(request);
 
-        //then
+        // then
         Review actual = repository.findAll().get(0);
         assertEquals(1L, actual.getId() );
+    }
+
+    @Test
+    @DisplayName("글 10개까지 출력되는 1 페이지 조회 ")
+    void test리뷰_전체_조회() {
+        List<Review> request = (List<Review>) IntStream.range(1,10); //
+        PageRequest pr = PageRequest.of(0,10);
+        Page<Review> result = repository.findAllPagingBy(pr);
+        assertNotNull(result);
+        for( Review r : result ){
+            System.out.println(r.toString());
+        }
     }
 }

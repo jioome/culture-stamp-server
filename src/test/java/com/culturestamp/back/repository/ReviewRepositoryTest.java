@@ -9,10 +9,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -64,9 +67,14 @@ public class ReviewRepositoryTest {
     }
 
     @Test
-    @DisplayName("리뷰/조회 - 아이디가 넘어오면 상세, 아니라면 전체 조회")
-    void test리뷰_단건_OR_전체_조회() {
-
+    //
+    void test리뷰_전체_조회() {
+        PageRequest pr = PageRequest.of(0,10);
+        Page<Review> result = repository.findAllPagingBy(pr);
+        assertNotNull(result);
+        for( Review r : result ){
+            System.out.println(r.toString());
+        }
     }
     
     @Test
