@@ -2,6 +2,7 @@ package com.culturestamp.back.controller;
 
 
 import com.culturestamp.back.dto.UserResponse;
+import com.culturestamp.back.dto.UserServiceResponse;
 import com.culturestamp.back.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class UserController {
     // TODO: final 문의
     @GetMapping("/{userId}")
     public UserResponse getUserById(@PathVariable String userId) {
-        System.out.println(userServiceImpl.getUserById(Long.valueOf(userId)));
-        return userServiceImpl.getUserById(Long.valueOf(userId));
+        final UserServiceResponse userServiceResponse = userServiceImpl.getUserById(Long.valueOf(userId));
+        return new UserResponse(userServiceResponse);
     }
 
 }

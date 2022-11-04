@@ -1,6 +1,7 @@
 package com.culturestamp.back.service.impl;
 
 import com.culturestamp.back.dto.UserResponse;
+import com.culturestamp.back.dto.UserServiceResponse;
 import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.UserRepository;
 import com.culturestamp.back.service.UserService;
@@ -18,10 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserResponse getUserById(Long userId) {
+    public UserServiceResponse getUserById(Long userId) {
         User user = userRepository.findById(userId)
                                     .orElseThrow(() -> new IllegalStateException("User ID에 해당하는 사용자가 없습니다."));
-        return new UserResponse(user);
+        return new UserServiceResponse(user);
     }
-
 }
