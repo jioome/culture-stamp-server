@@ -25,13 +25,13 @@ public class User extends BaseTimeEntity implements Serializable {
     @Column
     private String nickname;
 
-    @Column(nullable = false)
+    @Column
     private String loginId;
 
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -41,6 +41,7 @@ public class User extends BaseTimeEntity implements Serializable {
     // TODO: 변경 설명(RESPONSE 까지)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginAt;
+
     @Column
     private int failCount;
 
