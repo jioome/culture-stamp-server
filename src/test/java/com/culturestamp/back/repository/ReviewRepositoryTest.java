@@ -1,5 +1,6 @@
 package com.culturestamp.back.repository;
 
+import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.Role;
@@ -17,8 +18,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class ReviewRepositoryTest {
@@ -70,9 +71,9 @@ public class ReviewRepositoryTest {
     //
     void test리뷰_전체_조회() {
         PageRequest pr = PageRequest.of(0,10);
-        Page<Review> result = repository.findAllPagingBy(pr);
-        assertNotNull(result);
-        for( Review r : result ){
+        Page<ReviewResponse> result = repository.findAllPagingBy(pr);
+        assertThat(result.getTotalElements()).isEqualTo(3);
+        for( ReviewResponse r : result ){
             System.out.println(r.toString());
         }
     }

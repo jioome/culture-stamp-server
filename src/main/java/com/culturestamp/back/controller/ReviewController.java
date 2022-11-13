@@ -26,8 +26,8 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public String reviewDetails(@PathVariable String id){
-        return "";
+    public ResponseEntity<ReviewResponse> reviewDetails(@PathVariable Long id){
+        return ResponseEntity.ok().body( service.findReview(id) );
     }
 
     @PostMapping()
