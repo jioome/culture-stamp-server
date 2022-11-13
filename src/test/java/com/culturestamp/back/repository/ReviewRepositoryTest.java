@@ -1,5 +1,6 @@
 package com.culturestamp.back.repository;
 
+import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.Role;
@@ -9,13 +10,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class ReviewRepositoryTest {
@@ -64,9 +68,14 @@ public class ReviewRepositoryTest {
     }
 
     @Test
-    @DisplayName("리뷰/조회 - 아이디가 넘어오면 상세, 아니라면 전체 조회")
-    void test리뷰_단건_OR_전체_조회() {
-
+    //
+    void test리뷰_전체_조회() {
+        PageRequest pr = PageRequest.of(0,10);
+        Page<ReviewResponse> result = repository.findAllPagingBy(pr);
+        assertThat(result.getTotalElements()).isEqualTo(3);
+        for( ReviewResponse r : result ){
+            System.out.println(r.toString());
+        }
     }
     
     @Test

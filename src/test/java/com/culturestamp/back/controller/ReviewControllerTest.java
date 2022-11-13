@@ -7,6 +7,7 @@ import com.culturestamp.back.entity.Role;
 import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.ReviewRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,15 +16,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -103,5 +112,37 @@ public class ReviewControllerTest {
 
         Review actual = repository.findAll().get(0);
         assertEquals(1L, actual.getId());
+    }
+    
+    @Test
+    @DisplayName("글 10개까지 출력되는 1 페이지 조회")
+    void test리뷰_전체_조회() throws Exception {
+        /*
+            // given
+            List<Review> requestReviews = (List<Review>) IntStream.range(1,10)
+                                                                    .mapToObj( i -> Review.builder()
+                                                                            .title("제목 = "+ i )
+                                                                            .content("내용 = " + i )
+                                                                            .category(review.getCategory())
+                                                                            .user(review.getUser())
+                                                                            .performedDate(review.getPerformedDate())
+                                                                            .build()
+                                                                    ).collect( Collectors.toList() );
+
+            repository.saveAll(requestReviews);
+        */
+
+        // expected
+        mockMvc.perform( MockMvcRequestBuilders.get("/review?page=0&sort=id")
+                                                .contentType(APPLICATION_JSON)
+                )
+                .andExpect( status().isOk() )
+                /*.andExpect( jsonPath("$[0].reviewId").value(1 ) )
+                .andExpect( jsonPath("$[0].title").value("제목 = 9" ) )
+                .andExpect( jsonPath("$[0].content").value("내용 = 9" ) )*/
+                .andDo( print() );
+
+
+
     }
 }

@@ -25,6 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -41,6 +45,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 public class ReviewServiceTest {
@@ -81,8 +88,8 @@ public class ReviewServiceTest {
         review = Review.builder()
                 .category(category)
                 .price(500)
-                .title("영화테스트")
-                .content("리뷰 중 영화 리뷰 올리는 중 입니다.")
+                .title("영화테스트!!")
+                .content("리뷰 중 영화 리뷰 올리는 중!!")
                 .companion("")
                 .location("")
                 .rating(5)
@@ -98,7 +105,7 @@ public class ReviewServiceTest {
 
     @Test
     void test리뷰_기본_등록_서비스() throws Exception {
-        //given
+        // given
         ReviewRequest request = ReviewRequest.builder()
                                 .category(review.getCategory())
                                 .user(review.getUser())
@@ -112,11 +119,45 @@ public class ReviewServiceTest {
                                 .build();
 
 
-        //when
+        // when
         service.addReview(request);
 
-        //then
+        // then
         Review actual = repository.findAll().get(0);
         assertEquals(1L, actual.getId() );
+    }
+
+    @Test
+    @DisplayName("글 10개까지 출력되는 1 페이지 조회 ")
+    void test리뷰_전체_조회() {
+        // given
+        List<Review> requestReviews = (List<Review>) IntStream.range(1,10)
+                                                                .mapToObj( review -> Review.builder()
+                                                                                            .title("제목 = "+ review )
+                                                                                            .content("내용 = " + review )
+                                                                                            .build()
+                                                                ).collect( Collectors.toList() );
+
+        Pageable pageable = PageRequest.of( 0,10, Sort.by(Sort.Direction.DESC,"id") );
+
+        // when
+        List<ReviewResponse> reviews = service.findReviews(pageable);
+
+        // then
+        assertEquals(3, reviews.size() );
+    }
+    
+    @Test
+    void test리뷰_단건_조회() {
+        // given
+        repository.save(review);
+
+        // when
+        ReviewResponse response = service.findReview(review.getId());
+
+        // then
+        assertNotNull(response);
+        assertEquals( "영화테스트!!", response.getTitle());
+        assertEquals( "리뷰 중 영화 리뷰 올리는 중!!", response.getContent());
     }
 }
