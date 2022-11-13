@@ -26,11 +26,9 @@ public class UserServiceResponse {
 	public UserServiceResponse(User user) {
 		this.userId = user.getUserId();
 		this.nickname = user.getNickname();
-		this.loginId = user.getLoginId();
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 		this.lastLoginAt = user.getLastLoginAt();
-		this.failCount = user.getFailCount();
 	}
 }
 

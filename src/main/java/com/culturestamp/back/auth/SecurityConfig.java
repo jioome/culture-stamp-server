@@ -1,6 +1,5 @@
 package com.culturestamp.back.auth;
 
-import com.culturestamp.back.auth.CustomOAuth2UserService;
 import com.culturestamp.back.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .headers().frameOptions().disable()
         .and()
         .authorizeRequests()
-        .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile", "/user/login").permitAll()
+        .antMatchers("/", "/css/**", "/images/**", "/static/js/**", "/h2-console/**", "/profile", "/user/login").permitAll()
         .antMatchers("/api/v1/**").hasRole(Role.USER.name())
         .anyRequest().authenticated()
         .and()
