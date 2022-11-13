@@ -1,4 +1,4 @@
-package com.culturestamp.back;
+package com.culturestamp.back.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,11 +27,12 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Sample REST API",
-                "This is sample API.",
+                "- CURTURE STAMP REST API LIST -",
+                "This is CURTURE STAMP API.",
                 "V1",
-                "Terms of service",
-                new Contact("administrator", "www.example.com", "administrator@email.com"),
-                "License of API", "www.example.com", Collections.emptyList());
+                "Sample - Terms of service",
+                new Contact("Sample - administrator", "www.example.com", "administrator@email.com"),
+                "Sample - License of API", "www.example.com", Collections.emptyList()
+        );
     }
 }
