@@ -13,7 +13,7 @@ function oauthSignIn() {
   form.setAttribute('action', oauth2Endpoint);
 
   // Parameters to pass to OAuth 2.0 endpoint.
-  var params = {'client_id': '65473999009-3hch27kdnnd73dmj2uuk5u8t5u28a0mq.apps.googleusercontent.com',
+  var params = {'client_id': '398701196846-1n8sr22rc55etti1cedf9qvnaovpfb4q.apps.googleusercontent.com',
                 'redirect_uri': redirectUri,
                 'response_type': 'code',
                 'include_granted_scopes': 'true',

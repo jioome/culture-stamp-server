@@ -33,12 +33,10 @@ public class ReviewRepositoryTest {
         user = User.builder()
                     .userId(1L)
                     .nickname("별명")
-                    .loginId("testID")
                     .email("이메일@naver.com")
                     .password("wtefsfd")
                     .role(Role.USER)
                     .lastLoginAt(new SimpleDateFormat("yyyyMMdd").parse("20221028"))
-                    .failCount(0)
                     .build();
 
         category = new Category(1L,"Movie","0",user);
