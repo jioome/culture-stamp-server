@@ -12,4 +12,5 @@ public interface ReviewService {
     ReviewResponse findReview(Long reviewId);
     ReviewResponse addReview(ReviewRequest reviewRequest);
     ReviewResponse modifyReview(Long reviewId, ReviewEditorRequest reviewRequest);
+    void removeReview(Long reviewId);
 }

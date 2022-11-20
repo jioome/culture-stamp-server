@@ -188,4 +188,17 @@ public class ReviewServiceTest {
         assertEquals( "영화 테스트 제목 수정", changeReview.getTitle() );
         assertEquals( "영화 테스트 내용 수정", changeReview.getContent() );
     }
+
+    @Test
+    void test리뷰_삭제(){
+        // given
+        repository.save(review);
+
+        // when
+        service.removeReview( review.getId() );
+
+        // then
+        assertEquals( true, repository.findById(review.getId()).isEmpty() );
+    }
+
 }

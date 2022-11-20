@@ -3,6 +3,8 @@ package com.culturestamp.back.entity;
 import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -33,7 +35,7 @@ public class Review extends BaseTimeEntity {
     @Column(name = "performed_date", nullable = false)
     private LocalDateTime performedDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
