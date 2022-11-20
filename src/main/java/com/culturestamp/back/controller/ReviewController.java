@@ -1,5 +1,6 @@
 package com.culturestamp.back.controller;
 
+import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import com.culturestamp.back.controller.request.ReviewRequest;
 import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.service.ReviewService;
@@ -35,4 +36,8 @@ public class ReviewController {
         return ResponseEntity.ok( service.addReview(reviewRequest) );
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<ReviewResponse> reviewModify(@PathVariable Long id, @RequestBody ReviewEditorRequest reviewRequest){
+        return ResponseEntity.ok( service.modifyReview(id, reviewRequest) );
+    }
 }

@@ -1,5 +1,6 @@
 package com.culturestamp.back.service;
 
+import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import com.culturestamp.back.controller.request.ReviewRequest;
 import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.entity.Category;
@@ -13,6 +14,7 @@ import com.culturestamp.back.service.impl.ReviewServiceImpl;
 import com.culturestamp.back.service.impl.UserServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -159,5 +161,31 @@ public class ReviewServiceTest {
         assertNotNull(response);
         assertEquals( "영화테스트!!", response.getTitle());
         assertEquals( "리뷰 중 영화 리뷰 올리는 중!!", response.getContent());
+    }
+
+    @Test
+    void test리뷰_수정() {
+        // given
+        repository.save(review);
+
+        ReviewEditorRequest reviewEditorRequest = ReviewEditorRequest.builder()
+                                                                        .category(category)
+                                                                        .price(1000)
+                                                                        .title("영화 테스트 제목 수정")
+                                                                        .content("영화 테스트 내용 수정")
+                                                                        .companion("영희")
+                                                                        .location("신촌 CGV")
+                                                                        .rating(3)
+                                                                        .performedDate(LocalDateTime.now())
+                                                                        .build();
+
+        // when
+        service.modifyReview( review.getId(), reviewEditorRequest );
+
+        // then
+        Review changeReview = repository.findById(review.getId()).orElseThrow( () -> new RuntimeException("글 존재 X. ID = "+review.getId()) );
+
+        assertEquals( "영화 테스트 제목 수정", changeReview.getTitle() );
+        assertEquals( "영화 테스트 내용 수정", changeReview.getContent() );
     }
 }

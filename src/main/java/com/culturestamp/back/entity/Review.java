@@ -1,5 +1,6 @@
 package com.culturestamp.back.entity;
 
+import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -53,5 +54,28 @@ public class Review extends BaseTimeEntity {
         this.rating = rating;
         this.content = content;
         this.price = price;
+    }
+
+    public void edit(ReviewEditorRequest reviewEditorRequest) {
+        this.category = reviewEditorRequest.getCategory();
+        this.title = reviewEditorRequest.getTitle();
+        this.performedDate = reviewEditorRequest.getPerformedDate();
+        this.location = reviewEditorRequest.getLocation();
+        this.companion = reviewEditorRequest.getCompanion();
+        this.rating = reviewEditorRequest.getRating();
+        this.content = reviewEditorRequest.getContent();
+        this.price = reviewEditorRequest.getPrice();
+    }
+
+    public ReviewEditorRequest.ReviewEditorRequestBuilder toEditor(){
+        return ReviewEditorRequest.builder()
+                .category(category)
+                .title(title)
+                .performedDate(performedDate)
+                .location(location)
+                .companion(companion)
+                .rating(rating)
+                .content(content)
+                .price(price);
     }
 }
