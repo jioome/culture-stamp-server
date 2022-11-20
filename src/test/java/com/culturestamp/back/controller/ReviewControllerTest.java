@@ -1,5 +1,6 @@
 package com.culturestamp.back.controller;
 
+import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import com.culturestamp.back.controller.request.ReviewRequest;
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Review;
@@ -141,8 +142,32 @@ public class ReviewControllerTest {
                 .andExpect( jsonPath("$[0].title").value("제목 = 9" ) )
                 .andExpect( jsonPath("$[0].content").value("내용 = 9" ) )*/
                 .andDo( print() );
+    }
 
+    @Test
+    void test리뷰_수정() throws Exception {
+        // given
+        repository.save(review);
 
+        ReviewEditorRequest reviewEditorRequest = ReviewEditorRequest.builder()
+                                                                    .category(category)
+                                                                    .price(1000)
+                                                                    .title("영화 테스트 제목 수정")
+                                                                    .content("영화 테스트 내용 수정")
+                                                                    .companion("영희")
+                                                                    .location("신촌 CGV")
+                                                                    .rating(3)
+                                                                    .performedDate(LocalDateTime.now())
+                                                                    .build();
 
+        String json = objectMapper.writeValueAsString(reviewEditorRequest);
+
+        // expected
+        mockMvc.perform( MockMvcRequestBuilders.patch("/review/{id}", review.getId() )
+                                                .contentType(APPLICATION_JSON)
+                                                .content(json)
+                )
+                .andExpect( status().isOk() )
+                .andDo( print() );
     }
 }
