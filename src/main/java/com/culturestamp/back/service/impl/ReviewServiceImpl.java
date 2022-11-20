@@ -58,4 +58,10 @@ public class ReviewServiceImpl implements ReviewService {
         return new ReviewResponse(reviewOptional.get());
     }
 
+    @Override
+    public void removeReview(Long reviewId) {
+        final Review review = repository.findById(reviewId).orElseThrow(IllegalArgumentException::new);
+        repository.delete(review);
+    }
+
 }

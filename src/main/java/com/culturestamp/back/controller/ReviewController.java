@@ -40,4 +40,9 @@ public class ReviewController {
     public ResponseEntity<ReviewResponse> reviewModify(@PathVariable Long id, @RequestBody ReviewEditorRequest reviewRequest){
         return ResponseEntity.ok( service.modifyReview(id, reviewRequest) );
     }
+
+    @DeleteMapping("/{id}")
+    public void reviewRemove(@PathVariable Long id){
+        service.removeReview(id);
+    }
 }

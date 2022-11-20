@@ -170,4 +170,17 @@ public class ReviewControllerTest {
                 .andExpect( status().isOk() )
                 .andDo( print() );
     }
+
+    @Test
+    void test리뷰_삭제() throws Exception {
+        // given
+        repository.save(review);
+
+        // expected
+        mockMvc.perform( MockMvcRequestBuilders.delete("/review/{id}", review.getId() )
+                                                .contentType(APPLICATION_JSON)
+                )
+                .andExpect( status().isOk() )
+                .andDo( print() );
+    }
 }
