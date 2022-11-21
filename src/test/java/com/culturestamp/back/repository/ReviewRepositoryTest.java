@@ -45,7 +45,7 @@ public class ReviewRepositoryTest {
                     .failCount(0)
                     .build();
 
-        category = new Category(1L,"Movie","0",user);
+        category = new Category(1L,"Movie",1L,user);
 
         review = Review.builder()
                 .category(category)
