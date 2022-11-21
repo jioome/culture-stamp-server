@@ -8,8 +8,8 @@ import com.culturestamp.back.entity.Todo;
 
 public interface TodoService {
 	TodoResponse addTodo(TodoRequest todoRequest);
-	 List<Todo> findAllTodo();
+	List<Todo> findAllTodo();
 	TodoResponse findTodo(Long todoId);
-	 void removeTodo(Long todoId);
+	void removeTodo(Long todoId);
 	TodoResponse modifyTodo(Long todoId, TodoRequest todoRequest) throws Exception;
 }
