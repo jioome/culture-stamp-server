@@ -1,5 +1,8 @@
 package com.culturestamp.back.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +36,11 @@ public class CategoryController {
 		return new CategoryResponse(category);
 	}
 
+	@GetMapping()
+	public List<CategoryResponse> categoryAll() {
+		return service.findAllCategory().stream()
+			.map(CategoryResponse::fromEntity).collect(Collectors.toList());
+	}
 	@GetMapping("/{categoryId}")
 	public CategoryResponse categoryDetails(@PathVariable(name = "categoryId") Long categoryId) throws Exception {
 		Category category =  service.findCategory(categoryId);

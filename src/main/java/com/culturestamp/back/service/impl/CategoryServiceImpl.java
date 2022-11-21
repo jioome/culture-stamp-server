@@ -1,5 +1,6 @@
 package com.culturestamp.back.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -25,13 +26,21 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public Category addCategory(CategoryRequest categoryRequest){
 		// final UserResponse user = userService.getUserById(categoryRequest.getUserId());
-		final Category category = new Category(categoryRequest.getCategoryName(), categoryRequest.getReviewCount());
+		final Category category = new Category(categoryRequest.getCategoryName(), categoryRequest.getReviewCount(),categoryRequest.getUser());
+		System.out.println(categoryRequest.getUser());
 		return categoryRepository.save(category);
 	}
+
+	@Override
+	public List<Category> findAllCategory(){
+		return categoryRepository.findAll();
+	}
+
 	@Override
 	public Category findCategory(Long categoryId)  {
 		return categoryRepository.findById(categoryId).orElseThrow(NullPointerException::new);
 	}
+
 	@Override
 	public void removeCategory(Long categoryId){
 		categoryRepository.deleteById(categoryId);
