@@ -7,21 +7,19 @@
 3. 태그 기능
 4. 월별 통계 그래프
 5. 연말 결산 그래프
-## 기술 스택
-- Spring Boot 2.7.4
-- Spring Data JPA
-- Spring Security
-- Mysql
-- Java 17
+
+## 애플리케이션 (Language & Framework)
+Language - Java 17
+Framework - Spring Framework (Spring Boot, Spring MVC, Spring Security)
+Data - JPA/Hibernate, Mysql
+Test - Junit5, Spring Test, Mockito, SpringMockK
+Build Tool - Gradle
 ## ERD
-![Culture Stamp](https://user-images.githubusercontent.com/64303211/199386771-13be3acb-a7c1-4db1-80fb-864fa1add3c5.png)
+
+<img src="https://user-images.githubusercontent.com/64303211/199386771-13be3acb-a7c1-4db1-80fb-864fa1add3c5.png" width="2500" />
 
 ## Diagram
-
-![culturestamp](https://user-images.githubusercontent.com/64303211/194745216-5cbaef59-4aef-4636-9e22-4107c5d89a3f.jpeg)
-
-
-
+<img src="https://user-images.githubusercontent.com/64303211/194745216-5cbaef59-4aef-4636-9e22-4107c5d89a3f.jpeg" width="80%" height="60%"/>
 
 ## CONVENTION
 
