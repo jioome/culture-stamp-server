@@ -1,5 +1,7 @@
 package com.culturestamp.back.controller.request;
 
+import com.culturestamp.back.entity.Category;
+import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.User;
 
 import lombok.AllArgsConstructor;
@@ -45,5 +47,14 @@ public class CategoryRequest {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Category toEntity(CategoryRequest categoryRequest) {
+		return Category.builder()
+			.categoryName(categoryRequest.categoryName)
+			.reviewCount(categoryRequest.reviewCount)
+			.user(categoryRequest.user)
+			.build();
+	}
+
 }
 

@@ -31,7 +31,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @RequestMapping(value = "/todo")
 public class TodoController {
-	//
 	private final TodoService service;
 
 	@PostMapping()
