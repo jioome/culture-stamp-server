@@ -84,7 +84,7 @@ public class ReviewServiceTest {
                 .build();
         userRepository.save(user);
 
-        category = new Category( "Movie","0");
+        category = new Category( "Movie",2L);
         categoryRepository.save(category);
 
         review = Review.builder()

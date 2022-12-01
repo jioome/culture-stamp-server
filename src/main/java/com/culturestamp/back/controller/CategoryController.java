@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,9 +32,8 @@ public class CategoryController {
 	private final CategoryService service;
 
 	@PostMapping()
-	public CategoryResponse categoryAdd(@RequestBody CategoryRequest categoryRequest){
-		Category category = service.addCategory(categoryRequest);
-		return new CategoryResponse(category);
+	public ResponseEntity<CategoryResponse> categoryAdd(@RequestBody CategoryRequest categoryRequest){
+		return ResponseEntity.ok( service.addCategory(categoryRequest) );
 	}
 
 	@GetMapping()
@@ -42,9 +42,8 @@ public class CategoryController {
 			.map(CategoryResponse::fromEntity).collect(Collectors.toList());
 	}
 	@GetMapping("/{categoryId}")
-	public CategoryResponse categoryDetails(@PathVariable(name = "categoryId") Long categoryId) throws Exception {
-		Category category =  service.findCategory(categoryId);
-		return new CategoryResponse(category);
+	public ResponseEntity<CategoryResponse>  categoryDetails(@PathVariable(name = "categoryId") Long categoryId) throws Exception {
+		return ResponseEntity.ok().body( service.findCategory(categoryId) );
 	}
 
 	@DeleteMapping("/{categoryId}")
@@ -53,9 +52,8 @@ public class CategoryController {
 	}
 
 	@PatchMapping("/{categoryId}")
-	public CategoryResponse categoryModify(@PathVariable Long categoryId ,@RequestBody CategoryRequest categoryRequest) throws Exception {
-		final Category category =  service.modifyCategory(categoryId,categoryRequest);
-		return new CategoryResponse(category);
+	public ResponseEntity<CategoryResponse>  categoryModify(@PathVariable Long categoryId ,@RequestBody CategoryRequest categoryRequest) throws Exception {
+		return ResponseEntity.ok( service.modifyCategory(categoryId, categoryRequest) );
 	}
 
 

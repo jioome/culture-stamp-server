@@ -53,7 +53,7 @@ public class TodoServiceImpl implements TodoService {
 		}
 		Todo modifyTodo= optionalTodo.get();
 		if(todoRequest.getContent()!=null)modifyTodo.setContent(todoRequest.getContent());
-		if(todoRequest.getDate()!=null)modifyTodo.setDate(todoRequest.getDate());
+		modifyTodo.setDoneFlag(todoRequest.getDoneFlag());
 		Todo todo = todoRepository.save(modifyTodo);
 		return new TodoResponse(todo);
 	}

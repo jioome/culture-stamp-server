@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import com.culturestamp.back.dto.UserResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +39,7 @@ public class Category {
 
 	}
 
-
+	@Builder
 	public Category(Long categoryId, String categoryName, Long reviewCount, User user) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
@@ -46,13 +47,14 @@ public class Category {
 		this.user = user;
 	}
 
+	@Builder
 	public Category(String categoryName, Long reviewCount, User user) {
 		this.categoryName = categoryName;
 		this.reviewCount = reviewCount;
 		this.user = user;
 	}
 
-	public Category(String categoryName, String reviewCount) {
+	public Category(String categoryName, Long reviewCount) {
 	}
 
 
