@@ -9,11 +9,11 @@
 5. 연말 결산 그래프
 
 ## 애플리케이션 (Language & Framework)
-Language - Java 17
-Framework - Spring Framework (Spring Boot, Spring MVC, Spring Security)
-Data - JPA/Hibernate, Mysql
-Test - Junit5, Spring Test, Mockito, SpringMockK
-Build Tool - Gradle
+- Language - Java 17
+- Framework - Spring Framework (Spring Boot, Spring MVC, Spring Security)
+- Data - JPA/Hibernate, Mysql
+- Test - Junit5, Spring Test, Mockito, SpringMockK
+- Build Tool - Gradle
 ## ERD
 
 <img src="https://user-images.githubusercontent.com/64303211/199386771-13be3acb-a7c1-4db1-80fb-864fa1add3c5.png" width="2500" />
