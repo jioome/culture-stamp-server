@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.culturestamp.back.controller.request.CategoryRequest;
 import com.culturestamp.back.controller.request.TodoRequest;
