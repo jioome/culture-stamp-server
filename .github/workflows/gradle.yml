@@ -28,20 +28,20 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-#     - name: Setup MySQL
-#       uses: samin/mysql-action@v1
-#       with:
-#         character set server: 'utf8'
-#         mysql database: 'culture'
-#         mysql user: 'root'
-#         mysql password: ${{ secrets.MYSQL_PASSWORD }}
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1
+      with:
+        character set server: 'utf8'
+        mysql database: 'culture'
+        mysql user: 'root'
+        mysql password: ${{ secrets.MYSQL_PASSWORD }}
         
     - name: Build with Gradle
-      run: ./gradlew build -x test
+      run: ./gradlew build 
 
           
-    - name: Test with Gradle
-      run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
+#     - name: Test with Gradle
+#       run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
       
 #     - name: Publish Unit Test Results
 #       uses: EnricoMi/publish-unit-test-result-action@v1
