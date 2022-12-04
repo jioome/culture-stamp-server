@@ -152,7 +152,7 @@ public class CategoryServiceTest {
 		// when
 		service.modifyCategory( category.getCategoryId(), categoryRequest );
 
-		// then
+		/// then
 		Category changeCategory = repository.findById(category.getCategoryId()).orElseThrow( () -> new RuntimeException("존재 X todo ID = "+category.getCategoryId()) );
 
 
