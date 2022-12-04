@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build with Gradle
-      run: ././gradlew clean build -x test
+      run: ../../gradlew clean build -x test
       
     - name: Checkout
       uses: actions/checkout@v2
