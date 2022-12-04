@@ -30,7 +30,6 @@ jobs:
         distribution: 'temurin'
         
     - name: Build with Gradle
-<<<<<<< HEAD
       run: ./gradlew clean build -x test
 
     - name: Test with Gradle
@@ -41,8 +40,7 @@ jobs:
 #       if: ${{ always() }}
 #       with:
 #         files: build/test-results/**/*.xml
-=======
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
->>>>>>> 158b24577b4f08269dde6b3e580488aa16a78e2d
+
