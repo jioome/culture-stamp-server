@@ -46,8 +46,6 @@ jobs:
           mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
           mysql database: 'culture-stamp-dev' # Optional, default value is "test". The specified database which will be create
           mysql user: 'developer' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
-      
-      - name: Start MySQL
 
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
