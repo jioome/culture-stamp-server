@@ -8,8 +8,13 @@ on:
 
 jobs:
   build-and-push-image:
+    
+    # 실행 환경 지정
     runs-on: ubuntu-latest
-    steps:      
+    steps:
+    - name: Build with Gradle
+      run: ././gradlew clean build -x test
+      
     - name: Checkout
       uses: actions/checkout@v2
 
