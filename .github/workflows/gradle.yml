@@ -39,7 +39,7 @@ jobs:
         mysql user: 'root'
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
         
-    - name: Build with Gradle
+    - name: Build with Gradle # 실제 application build(-x 옵션을 통해 test는 제외)
       run: ./gradlew build -x test
           
     - name: Test with Gradle
