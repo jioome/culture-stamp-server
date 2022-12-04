@@ -101,7 +101,6 @@ public class TodoServiceTest {
 				.build()
 			).toList();
 
-
 		// when
 		List<Todo> todo = service.findAllTodo();
 
