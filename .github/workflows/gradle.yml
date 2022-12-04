@@ -43,8 +43,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew clean build -x test
 
-#     - name: Test with Gradle
-#       run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
+    - name: Test with Gradle
+      run: ./gradlew test
       
 ##     - name: Publish Unit Test Results
 #       uses: EnricoMi/publish-unit-test-result-action@v1
