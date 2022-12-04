@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      working-directory: ${{ env.working-directory }}
+
+    - name: Build with Gradle
+      run: ./gradlew clean build --debug
+      working-directory: ${{ env.working-directory }}
+      
     - name: Checkout
       uses: actions/checkout@v2
 
