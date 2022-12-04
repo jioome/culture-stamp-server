@@ -35,5 +35,5 @@ jobs:
         # arguments: build
 
     - name: Build with Gradle
-      run: ./gradlew clean build
+      run: ./gradlew clean build -x test
 
