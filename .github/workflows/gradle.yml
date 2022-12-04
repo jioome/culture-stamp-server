@@ -1,3 +1,4 @@
+
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -19,36 +20,32 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-    
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
+        distribution: 'temurin'
         
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Setup MySQL
-      uses: samin/mysql-action@v1
-      with:
-        character set server: 'utf8'
-        mysql database: 'culture'
-        mysql user: 'root'
-        mysql password: ${{ secrets.MYSQL_PASSWORD }}
+#     - name: Setup MySQL
+#       uses: samin/mysql-action@v1
+#       with:
+#         character set server: 'utf8'
+#         mysql database: 'culture'
+#         mysql user: 'root'
+#         mysql password: ${{ secrets.MYSQL_PASSWORD }}
         
-    - name: Build with Gradle # 실제 application build(-x 옵션을 통해 test는 제외)
+    - name: Build with Gradle
       run: ./gradlew build -x test
+
           
-    - name: Test with Gradle
-      run: ./gradlew test
+#     - name: Test with Gradle
+#       run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
       
 #     - name: Publish Unit Test Results
 #       uses: EnricoMi/publish-unit-test-result-action@v1
 #       if: ${{ always() }}
 #       with:
 #         files: build/test-results/**/*.xml
-
-        
