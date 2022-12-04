@@ -9,11 +9,7 @@ on:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    steps:
-    
-    - name: Build with Gradle
-      run: ./gradlew clean build --debug
-      
+    steps:      
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -35,5 +31,6 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
+        context: .
         push: true
         tags: jioome/culture-stamp:latest
