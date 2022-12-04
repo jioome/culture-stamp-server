@@ -1,4 +1,4 @@
-package com.culturestamp.back.auth.utils;
+package com.culturestamp.back.util;
 
 import org.springframework.util.SerializationUtils;
 

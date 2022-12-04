@@ -1,27 +1,21 @@
 package com.culturestamp.back.service.impl;
 
-import java.util.Optional;
-
-import javax.persistence.EntityNotFoundException;
-
-import org.springframework.stereotype.Service;
-
 import com.culturestamp.back.controller.request.CategoryRequest;
-import com.culturestamp.back.dto.UserResponse;
 import com.culturestamp.back.entity.Category;
-import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.CategoryRepository;
 import com.culturestamp.back.service.CategoryService;
-import com.culturestamp.back.service.UserService;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
 	final private CategoryRepository categoryRepository;
-	// final private UserService userService;
+	// final private UserOAuthService userService;
 	@Override
 	public Category addCategory(CategoryRequest categoryRequest){
 		// final UserResponse user = userService.getUserById(categoryRequest.getUserId());

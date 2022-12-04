@@ -1,6 +1,6 @@
 package com.culturestamp.back.auth.api.service;
 
-import com.culturestamp.back.dto.UserServiceResponse;
+import com.culturestamp.back.dto.UserResponse;
 import com.culturestamp.back.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserOAuthService {
     private final UserRepository userRepository;
 
-    public UserServiceResponse getUser(String userId);
-
+    public UserResponse getUser(String userId) {
+       return new UserResponse(userRepository.findByUserId(userId));
+    }
 }

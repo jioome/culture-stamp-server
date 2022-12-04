@@ -12,16 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
-public class UserController {
+public class UserOAuthController {
 
     private final UserOAuthService userOAuthService;
 
     @GetMapping
     public ApiResponse getUser() {
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         UserResponse userResponse = userOAuthService.getUser(principal.getUsername());
-
         return ApiResponse.success("user", userResponse);
     }
 }

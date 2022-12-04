@@ -2,7 +2,6 @@ package com.culturestamp.back.repository;
 
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Review;
-import com.culturestamp.back.entity.Role;
 import com.culturestamp.back.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,10 +32,12 @@ public class ReviewRepositoryTest {
         user = User.builder()
                     .userId(1L)
                     .nickname("별명")
+//                    .loginId("testID")
                     .email("이메일@naver.com")
                     .password("wtefsfd")
                     .role(Role.USER)
                     .lastLoginAt(new SimpleDateFormat("yyyyMMdd").parse("20221028"))
+                    .failCount(0)
                     .build();
 
         category = new Category(1L,"Movie","0",user);
