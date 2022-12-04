@@ -13,7 +13,6 @@ jobs:
     
     - name: Build with Gradle
       run: ./gradlew clean build --debug
-      working-directory: ${{ env.working-directory }}
       
     - name: Checkout
       uses: actions/checkout@v2
