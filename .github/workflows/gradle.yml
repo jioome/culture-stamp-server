@@ -37,11 +37,11 @@ jobs:
         mysql password: ${{ secrets.MYSQL_PASSWORD }}
         
     - name: Build with Gradle
-      run: ./gradlew build 
+      run: ./gradlew build -x test
 
           
-#     - name: Test with Gradle
-#       run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
+    - name: Test with Gradle
+      run: SPRING_PROFILES_ACTIVE=[test] ./gradlew test
       
 #     - name: Publish Unit Test Results
 #       uses: EnricoMi/publish-unit-test-result-action@v1
