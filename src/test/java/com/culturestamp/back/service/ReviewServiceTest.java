@@ -83,9 +83,9 @@ public class ReviewServiceTest {
                 .failCount(0)
                 .build();
 
-
+        userRepository.save(user);
         category = new Category( "Movie",2L);
-
+        categoryRepository.save(category);
 
         review = Review.builder()
                 .category(category)
@@ -108,7 +108,7 @@ public class ReviewServiceTest {
     @Test
     void test리뷰_기본_등록_서비스() throws Exception {
         // given
-        userRepository.save(user);
+
         ReviewRequest request = ReviewRequest.builder()
                                 .category(review.getCategory())
                                 .user(review.getUser())
