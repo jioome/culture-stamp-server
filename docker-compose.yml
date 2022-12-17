@@ -7,9 +7,7 @@ services:
       MYSQL_DATABASE: test
       MYSQL_ROOT_PASSWORD: 1234
     ports:
-      - 3307:3306
-    expose:
-      - 3307
+      - 3306:3306
 
   backend:
     image: jioome/culture-stamp:latest
