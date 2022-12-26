@@ -1,19 +1,16 @@
 package com.culturestamp.back.service.impl;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.EntityNotFoundException;
-
-import org.springframework.stereotype.Service;
-
 import com.culturestamp.back.controller.request.TodoRequest;
 import com.culturestamp.back.dto.TodoResponse;
 import com.culturestamp.back.entity.Todo;
 import com.culturestamp.back.repository.TodoRepository;
 import com.culturestamp.back.service.TodoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import lombok.*;
+import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

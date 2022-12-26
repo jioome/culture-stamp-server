@@ -1,9 +1,6 @@
 package com.culturestamp.back.dto;
 
-import javax.persistence.Entity;
-
 import com.culturestamp.back.entity.Tag;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
