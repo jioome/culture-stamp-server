@@ -25,22 +25,23 @@ public class User extends BaseTimeEntity implements Serializable {
     @Column
     private String nickname;
 
-    @Column(nullable = false)
+    @Column
     private String loginId;
 
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
-    // TODO: 변경 설명
+    // TODO: 변경 설명(RESPONSE 까지)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginAt;
+
     @Column
     private int failCount;
 
@@ -52,6 +53,12 @@ public class User extends BaseTimeEntity implements Serializable {
         this.password = password;
         this.role = role;
         this.failCount = failCount;
+    }
+
+
+    public User update(String name, String picture) {
+        this.nickname = name;
+        return this;
     }
 
     public String getRoleKey() {
