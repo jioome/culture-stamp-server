@@ -1,15 +1,11 @@
 package com.culturestamp.back.dto;
 
-import com.culturestamp.back.auth.oauth.entity.ProviderType;
-import com.culturestamp.back.auth.oauth.entity.RoleType;
 import com.culturestamp.back.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,11 +14,11 @@ public class UserResponse {
 
 	private String nickname;
 	private String loginId;
-	private ProviderType providerType;
+	private String providerType;
 //	private String providerId;
 	private String email;
 	private String password;
-	private RoleType roleType;
+	private String role;
 	private Date lastLoginAt;
 	private int failCount;
 
@@ -31,6 +27,7 @@ public class UserResponse {
 		this.loginId = userServiceResponse.getLoginId();
 		this.providerType = userServiceResponse.getProviderType();
 //		this.providerId = userServiceResponse.getProviderId();
+		this.role = userServiceResponse.getRole();
 		this.email = userServiceResponse.getEmail();
 		this.password = userServiceResponse.getPassword();
 		this.lastLoginAt = userServiceResponse.getLastLoginAt();
@@ -42,6 +39,7 @@ public class UserResponse {
 		this.loginId = user.getLoginId();
 		this.providerType = user.getProviderType();
 //		this.providerId = user.getProviderId();
+		this.role = user.getRole();
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 		this.lastLoginAt = user.getLastLoginAt();

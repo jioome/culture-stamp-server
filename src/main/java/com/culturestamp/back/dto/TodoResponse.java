@@ -1,18 +1,12 @@
 package com.culturestamp.back.dto;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-import javax.persistence.Column;
-
-import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Todo;
 import com.culturestamp.back.entity.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor

@@ -1,16 +1,11 @@
 package com.culturestamp.back.dto;
 
-import java.util.Date;
-
 import com.culturestamp.back.entity.User;
-
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,11 +15,11 @@ public class UserServiceResponse {
 	private Long userId;
 	private String nickname;
 	private String loginId;
-	private ProviderType providerType;
+	private String providerType;
 //	private String providerId;
 	private String email;
 	private String password;
-	private RoleType roleType;
+	private String role;
 	private Date lastLoginAt;
 	private int failCount;
 
@@ -37,6 +32,11 @@ public class UserServiceResponse {
 		this.email = user.getEmail();
 		this.password = user.getPassword();
 		this.lastLoginAt = user.getLastLoginAt();
+	}
+
+	public UserServiceResponse(String email, String nickname) {
+		this.email = email;
+		this.nickname = nickname;
 	}
 
 	public UserServiceResponse update(String name) {
