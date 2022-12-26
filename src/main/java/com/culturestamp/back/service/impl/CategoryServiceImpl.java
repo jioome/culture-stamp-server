@@ -1,38 +1,52 @@
 package com.culturestamp.back.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+
+import org.springframework.stereotype.Service;
+
 import com.culturestamp.back.controller.request.CategoryRequest;
+import com.culturestamp.back.dto.CategoryResponse;
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.repository.CategoryRepository;
 import com.culturestamp.back.service.CategoryService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
 	final private CategoryRepository categoryRepository;
-	// final private UserOAuthService userService;
+
 	@Override
-	public Category addCategory(CategoryRequest categoryRequest){
+	public CategoryResponse addCategory(CategoryRequest categoryRequest){
 		// final UserResponse user = userService.getUserById(categoryRequest.getUserId());
-		final Category category = new Category(categoryRequest.getCategoryName(), categoryRequest.getReviewCount());
-		return categoryRepository.save(category);
+		final Category category = categoryRepository.save(categoryRequest.toEntity(categoryRequest));
+		return new CategoryResponse(category);
+
 	}
+
 	@Override
-	public Category findCategory(Long categoryId)  {
-		return categoryRepository.findById(categoryId).orElseThrow(NullPointerException::new);
+	public List<Category> findAllCategory(){
+		return categoryRepository.findAll();
 	}
+
+	@Override
+	public CategoryResponse findCategory(Long categoryId)  {
+		final Category category =  categoryRepository.findById(categoryId).orElseThrow(NullPointerException::new);
+		return new CategoryResponse(category);
+	}
+
 	@Override
 	public void removeCategory(Long categoryId){
 		categoryRepository.deleteById(categoryId);
 	}
 
 	@Override
-	public Category modifyCategory(Long categoryId, CategoryRequest categoryRequest) throws Exception {
+	public CategoryResponse modifyCategory(Long categoryId, CategoryRequest categoryRequest) throws Exception {
 		Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
 		if (optionalCategory.isEmpty()) {
 			throw new EntityNotFoundException(
@@ -42,7 +56,8 @@ public class CategoryServiceImpl implements CategoryService {
 		Category modifyCategory = optionalCategory.get();
 		if(categoryRequest.getCategoryName()!=null)modifyCategory.setCategoryName(categoryRequest.getCategoryName());
 		if(categoryRequest.getReviewCount()!=null)modifyCategory.setReviewCount(categoryRequest.getReviewCount());
-		return categoryRepository.save(modifyCategory);
+		categoryRepository.save(modifyCategory);
+		return new CategoryResponse(modifyCategory);
 	}
 
 
