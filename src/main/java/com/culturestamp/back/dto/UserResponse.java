@@ -22,18 +22,20 @@ public class UserResponse {
 	private Date lastLoginAt;
 	private int failCount;
 
-	public UserResponse(UserServiceResponse userServiceResponse) {
-		this.nickname = userServiceResponse.getNickname();
-		this.loginId = userServiceResponse.getLoginId();
-		this.providerType = userServiceResponse.getProviderType();
-//		this.providerId = userServiceResponse.getProviderId();
-		this.role = userServiceResponse.getRole();
-		this.email = userServiceResponse.getEmail();
-		this.password = userServiceResponse.getPassword();
-		this.lastLoginAt = userServiceResponse.getLastLoginAt();
-		this.failCount = userServiceResponse.getFailCount();
+	@Builder
+	public UserResponse(UserServiceResponse user) {
+		this.nickname = user.getNickname();
+		this.loginId = user.getLoginId();
+		this.providerType = user.getProviderType();
+//		this.providerId = user.getProviderId();
+		this.role = user.getRole();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.lastLoginAt = user.getLastLoginAt();
+		this.failCount = user.getFailCount();
 	}
 
+	@Builder
 	public UserResponse(User user) {
 		this.nickname = user.getNickname();
 		this.loginId = user.getLoginId();
