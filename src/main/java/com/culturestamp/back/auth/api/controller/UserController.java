@@ -18,7 +18,6 @@ public class UserController {
         this.userServiceImpl = userServiceImpl;
     }
 
-
     // TODO: final 문의
     @GetMapping("/user/{userId}")
     public UserResponse getUserById(@PathVariable String userId) {
