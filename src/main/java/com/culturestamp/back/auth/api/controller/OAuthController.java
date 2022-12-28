@@ -31,7 +31,7 @@ public class OAuthController {
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
         // TODO: 후에 redirectionUri 변경
-        response.sendRedirect("http://localhost:8080/");
+        response.sendRedirect("http://localhost:3030/");
         return ResponseEntity.ok().build();
     }
 
