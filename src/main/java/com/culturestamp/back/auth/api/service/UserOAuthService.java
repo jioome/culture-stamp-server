@@ -140,8 +140,9 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
             UserServiceResponse userServiceResponse = new UserServiceResponse(user);
             userServiceResponse.setRole(USER.getKey());
         }
-        existingUserService.setNickname(user.getNickname());
+        assert existingUserService != null;
         existingUserService.setEmail(user.getEmail());
+        System.out.println(user.getEmail());
         return userRepository.save(new User(existingUserService));
     }
 
