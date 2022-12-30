@@ -14,6 +14,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Getter
+@Setter
 public class User extends BaseTimeEntity implements Serializable {
 
     @Id
