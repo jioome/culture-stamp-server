@@ -2,26 +2,34 @@ package com.culturestamp.back.auth.config.security;
 
 import com.culturestamp.back.auth.api.service.UserOAuthService;
 import com.culturestamp.back.auth.config.filter.JWTRequestFilter;
+
+import org.apache.tomcat.util.file.ConfigurationSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import lombok.RequiredArgsConstructor;
 
 @EnableWebSecurity
+@Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserOAuthService userOAuthService;
     private final JWTRequestFilter jwtRequestFilter;
 
-
     public SecurityConfig(UserOAuthService userOAuthService, JWTRequestFilter jwtRequestFilter) {
         this.userOAuthService = userOAuthService;
         this.jwtRequestFilter = jwtRequestFilter;
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -33,19 +41,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .headers().frameOptions().disable()
             .and()
             .authorizeRequests()
-                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
-                .antMatchers("/swagger/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
-                .antMatchers("/oauth/login/google").permitAll()
-                // .anyRequest().authenticated()
+            .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
+            .antMatchers("/swagger/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
+            .antMatchers("/oauth/login/google").permitAll()
+            // .anyRequest().authenticated()
             .and()
             .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
-                .deleteCookies("AUTH-TOKEN")
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/")
+            .deleteCookies("AUTH-TOKEN")
             .and()
             .oauth2Login()
             .userInfoEndpoint()
             .userService(userOAuthService);
     }
 
+
 }
+
+
