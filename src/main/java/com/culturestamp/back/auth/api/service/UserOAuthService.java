@@ -100,6 +100,7 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
         return jwtUtils.createToken(new UserServiceResponse(user), false);
     }
 
+
     public GoogleOAuthTokenDto exchangeCodeToToken(HttpServletRequest request) throws Exception {
         String code = request.getParameter("code");
 
@@ -117,6 +118,7 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
 
         return tokenDto;
     }
+
 
     public MultiValueMap<String, String> setParameter(String code) {
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
@@ -138,8 +140,9 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
             UserServiceResponse userServiceResponse = new UserServiceResponse(user);
             userServiceResponse.setRole(USER.getKey());
         }
-        existingUserService.setNickname(user.getNickname());
+        assert existingUserService != null;
         existingUserService.setEmail(user.getEmail());
+        System.out.println(user.getEmail());
         return userRepository.save(new User(existingUserService));
     }
 
