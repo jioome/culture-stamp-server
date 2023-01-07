@@ -40,6 +40,7 @@ import java.util.Collections;
 
 import static com.culturestamp.back.entity.Role.USER;
 
+
 @Service
 public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
@@ -52,7 +53,7 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
     private final GoogleOAuthProperties googleOAuthProperties;
 
     public UserOAuthService(@Value("${app.googleClientId}") String clientId, UserRepository userRepository,
-                        JWTUtils jwtUtils, HttpSession httpSession, GoogleOAuthProperties googleOAuthProperties) {
+        JWTUtils jwtUtils, HttpSession httpSession, GoogleOAuthProperties googleOAuthProperties) {
         this.userRepository = userRepository;
         this.jwtUtils = jwtUtils;
         this.httpSession = httpSession;
@@ -60,8 +61,8 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
         NetHttpTransport transport = new NetHttpTransport();
         JsonFactory jsonFactory = new JacksonFactory();
         verifier = new GoogleIdTokenVerifier.Builder(transport, jsonFactory)
-                .setAudience(Collections.singletonList(clientId))
-                .build();
+            .setAudience(Collections.singletonList(clientId))
+            .build();
     }
 
     @Override
@@ -71,7 +72,7 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
-                .getUserInfoEndpoint().getUserNameAttributeName();
+            .getUserInfoEndpoint().getUserNameAttributeName();
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
@@ -79,9 +80,9 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
         httpSession.setAttribute("user", user);
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRole())),
-                attributes.getAttributes(),
-                attributes.getNameAttributeKey());
+            Collections.singleton(new SimpleGrantedAuthority(user.getRole())),
+            attributes.getAttributes(),
+            attributes.getNameAttributeKey());
     }
 
 
@@ -139,8 +140,8 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
         if (existingUserService == null) {
             UserServiceResponse userServiceResponse = new UserServiceResponse(user);
             userServiceResponse.setRole(USER.getKey());
+            existingUserService = userServiceResponse;
         }
-        assert existingUserService != null;
         existingUserService.setEmail(user.getEmail());
         System.out.println(user.getEmail());
         return userRepository.save(new User(existingUserService));
