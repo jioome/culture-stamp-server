@@ -104,6 +104,7 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
     public GoogleOAuthTokenDto exchangeCodeToToken(HttpServletRequest request) throws Exception {
         String code = request.getParameter("code");
 
+        System.out.println("code :" + code);
         HttpHeaders headers = new HttpHeaders();
         RestTemplate restTemplate = new RestTemplate();
 
@@ -139,8 +140,8 @@ public class UserOAuthService implements OAuth2UserService<OAuth2UserRequest, OA
         if (existingUserService == null) {
             UserServiceResponse userServiceResponse = new UserServiceResponse(user);
             userServiceResponse.setRole(USER.getKey());
+            existingUserService = userServiceResponse;
         }
-        assert existingUserService != null;
         existingUserService.setEmail(user.getEmail());
         System.out.println(user.getEmail());
         return userRepository.save(new User(existingUserService));
