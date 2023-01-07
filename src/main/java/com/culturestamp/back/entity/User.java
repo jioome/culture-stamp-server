@@ -22,8 +22,7 @@ public class User extends BaseTimeEntity implements Serializable {
     private Long userId;
 
     // TODO: UNIQUE 설정. email을 의미할 수도 있음
-    @Column(unique = true, length=64)
-//    @Size(max = 100)
+    // @Column(length=64,nullable = true)
     private String loginId;
 
     @Column
