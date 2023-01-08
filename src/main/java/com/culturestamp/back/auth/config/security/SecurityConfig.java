@@ -2,10 +2,6 @@ package com.culturestamp.back.auth.config.security;
 
 import com.culturestamp.back.auth.api.service.UserOAuthService;
 import com.culturestamp.back.auth.config.filter.JWTRequestFilter;
-
-import org.apache.tomcat.util.file.ConfigurationSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -41,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
             .antMatchers("/swagger/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
             .antMatchers("/oauth/login/google").permitAll()
-            // .anyRequest().authenticated()
+//             .anyRequest().authenticated()
             .and()
             .logout()
             .logoutUrl("/logout")

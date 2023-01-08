@@ -28,7 +28,7 @@ public class OAuthController {
     @GetMapping("/user/info")
     public ResponseEntity getIndex(Principal principal, HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (principal == null) {
-            response.sendRedirect("http://localhost:8080/oauth2/authorization/google");
+            response.sendRedirect("https://ec2-3-35-144-181.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google");
             return ResponseEntity.ok().build();
         }
         User entity = userOAuthService.getUser(Long.valueOf(principal.getName()));
