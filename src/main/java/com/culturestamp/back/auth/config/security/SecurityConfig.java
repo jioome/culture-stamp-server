@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
             .antMatchers("/swagger/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
             .antMatchers("/oauth/login/google").permitAll()
-             .anyRequest().authenticated()
+//             .anyRequest().authenticated()
             .and()
             .logout()
             .logoutUrl("/logout")
