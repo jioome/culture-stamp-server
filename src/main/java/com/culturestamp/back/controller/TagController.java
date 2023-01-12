@@ -20,7 +20,6 @@ public class TagController {
 
 	@PostMapping()
 	public ResponseEntity<?> TagAdd(@RequestBody TagRequest tagRequest){
-
 		TagResponse tagResponse = service.addTag(tagRequest);
 		return ResponseEntity.ok(new CommonResponse<>("SUCCESS",tagResponse));
 	}
