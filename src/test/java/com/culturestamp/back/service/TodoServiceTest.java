@@ -13,21 +13,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.culturestamp.back.controller.request.ReviewEditorRequest;
 import com.culturestamp.back.controller.request.TodoRequest;
-import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.dto.TodoResponse;
-import com.culturestamp.back.entity.Category;
-import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.Role;
 import com.culturestamp.back.entity.Todo;
 import com.culturestamp.back.entity.User;
-import com.culturestamp.back.repository.ReviewRepository;
 import com.culturestamp.back.repository.TodoRepository;
 import com.culturestamp.back.repository.UserRepository;
-import com.culturestamp.back.service.impl.ReviewServiceImpl;
 import com.culturestamp.back.service.impl.TodoServiceImpl;
 
 @SpringBootTest

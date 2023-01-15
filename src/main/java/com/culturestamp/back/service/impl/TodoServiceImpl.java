@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,11 +18,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TodoServiceImpl implements TodoService {
 	final private TodoRepository todoRepository;
-
+	Principal principal;
 
 	@Override
 	public TodoResponse addTodo(TodoRequest todoRequest){
-		Todo todo = todoRepository.save(todoRequest.toEntity(todoRequest));
+
+		// System.out.println(Long.valueOf(principal.getName()));
+		final Todo todo = todoRepository.save(todoRequest.toEntity(todoRequest));
 		return new TodoResponse(todo);
 	}
 

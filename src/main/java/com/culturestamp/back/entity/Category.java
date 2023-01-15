@@ -2,15 +2,11 @@ package com.culturestamp.back.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.culturestamp.back.dto.UserResponse;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +19,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private Long categoryId;
+	private Long id;
 
 	@Column(name = "category_name")
 	private String categoryName;
@@ -40,8 +36,8 @@ public class Category {
 	}
 
 	@Builder
-	public Category(Long categoryId, String categoryName, Long reviewCount, User user) {
-		this.categoryId = categoryId;
+	public Category(Long id, String categoryName, Long reviewCount, User user) {
+		this.id = id;
 		this.categoryName = categoryName;
 		this.reviewCount = reviewCount;
 		this.user = user;
