@@ -98,7 +98,9 @@ public class ReviewServiceTest {
                 .performedDate(LocalDateTime.now())
                 .user(user)
                 .build();
+        repository.save(review);
     }
+
 
     @Test
     void testMock객체생성(){
