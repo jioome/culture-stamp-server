@@ -3,7 +3,7 @@ package com.culturestamp.back.dto;
 import com.culturestamp.back.entity.Category;
 import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.User;
-import lombok.AllArgsConstructor;
+
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,10 +1,14 @@
 package com.culturestamp.back.service;
 
+import java.util.Optional;
 
-import com.culturestamp.back.dto.UserServiceResponse;
+import com.culturestamp.back.dto.UserRequest;
+import com.culturestamp.back.entity.User;
 
 public interface UserService {
-    public UserServiceResponse getUserById(Long userId);
-    public UserServiceResponse getUserByEmail(String email);
-    public UserServiceResponse getUser(String userId);
+	User create(UserRequest userParameter);
+	User create(User user);
+	User read(Long id);
+	Optional<User> findByEmail(String email);
 }
+

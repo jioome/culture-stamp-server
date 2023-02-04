@@ -17,10 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 import com.culturestamp.back.controller.request.CategoryRequest;
 import com.culturestamp.back.dto.CategoryResponse;
 import com.culturestamp.back.entity.Category;
-import com.culturestamp.back.entity.Role;
-import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.CategoryRepository;
-import com.culturestamp.back.repository.UserRepository;
 import com.culturestamp.back.service.impl.CategoryServiceImpl;
 
 @ActiveProfiles("test")

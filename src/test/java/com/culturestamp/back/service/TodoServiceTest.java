@@ -16,11 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.culturestamp.back.controller.request.TodoRequest;
 import com.culturestamp.back.dto.TodoResponse;
-import com.culturestamp.back.entity.Role;
 import com.culturestamp.back.entity.Todo;
-import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.TodoRepository;
-import com.culturestamp.back.repository.UserRepository;
 import com.culturestamp.back.service.impl.TodoServiceImpl;
 
 @SpringBootTest

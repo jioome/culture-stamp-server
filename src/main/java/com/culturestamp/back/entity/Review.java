@@ -1,19 +1,15 @@
 package com.culturestamp.back.entity;
 
 import com.culturestamp.back.controller.request.ReviewEditorRequest;
+
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
-@ToString(exclude = "categoryId,userId")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode( of = {"id","categoryId","userId"} )
 public class Review extends BaseTimeEntity {
