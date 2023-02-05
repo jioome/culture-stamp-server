@@ -26,7 +26,8 @@ dependencies {
 
 	// 로그인 관련 ---------------------------------
 	implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' //OAuth
+	implementation 'org.springframework.b' +
+			'oot:spring-boot-starter-oauth2-client' //OAuth
 	implementation 'com.google.api-client:google-api-client:1.30.10' //Google Client API
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.2' // JWT
 		// 로그인과 관련 없으나 확인용

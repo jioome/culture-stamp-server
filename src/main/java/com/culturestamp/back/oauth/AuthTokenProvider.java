@@ -46,7 +46,8 @@ public class AuthTokenProvider {
 
 			log.debug("claims subject := [{}]", claims.getSubject());
 			User principal = new User(claims.getSubject(), "", authorities);
-
+			System.out.println("하이");
+			System.out.println(principal.getUsername());
 			return new UsernamePasswordAuthenticationToken(principal, authToken, authorities);
 		} else {
 			throw new RuntimeException();

@@ -9,23 +9,19 @@ public class UserRequest {
 	private String email;
 	private String nickName;
 	private String picture;
-	private String status;
-	private String follower;
 	private Role role;
 
 	public UserRequest(){
 
 	}
 
-	public UserRequest(Long userId, Long socialId, String email, String nickName, String picture, String status,
-		String follower, Role role) {
+	public UserRequest(Long userId, Long socialId, String email, String nickName, String picture,
+		 Role role) {
 		this.userId = userId;
 		this.socialId = socialId;
 		this.email = email;
 		this.nickName = nickName;
 		this.picture = picture;
-		this.status = status;
-		this.follower = follower;
 		this.role = role;
 	}
 
@@ -69,21 +65,6 @@ public class UserRequest {
 		this.picture = picture;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getFollower() {
-		return follower;
-	}
-
-	public void setFollower(String follower) {
-		this.follower = follower;
-	}
 
 	public Role getRole() {
 		return role;

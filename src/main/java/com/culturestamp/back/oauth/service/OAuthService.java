@@ -103,7 +103,7 @@ public class OAuthService {
 
 		// 가입인지, 업데이트인지
 		if (user == null) {
-			user = new User(null, socialId.longValue(),email,null,picture,null, null, Role.USER);
+			user = new User(null, socialId.longValue(),email,null,picture, Role.USER);
 			userService.create(user);
 		}
 

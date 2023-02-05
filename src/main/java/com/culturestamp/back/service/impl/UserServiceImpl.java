@@ -22,7 +22,7 @@ public class UserServiceImpl {
 
 	// create 없이 delete update read 만 있어도 됨
 	public User create(UserRequest userParameter) {
-		final User user = new User(userParameter.getUserId(),userParameter.getSocialId(), userParameter.getEmail(), userParameter.getNickName(),userParameter.getPicture(),userParameter.getStatus(),userParameter.getFollower(),userParameter.getRole());
+		final User user = new User(userParameter.getUserId(),userParameter.getSocialId(), userParameter.getEmail(), userParameter.getNickName(),userParameter.getPicture(),userParameter.getRole());
 		return userRepository.save(user);
 	}
 
