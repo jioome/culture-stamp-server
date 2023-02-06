@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
             .logoutUrl("/logout")
             .logoutSuccessUrl("/")
-            .deleteCookies("AUTH-TOKEN")
+            .deleteCookies("test")
             .and()
             .oauth2Login()
             .userInfoEndpoint()
