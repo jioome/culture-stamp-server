@@ -41,7 +41,7 @@ public class OAuthController {
     public ResponseEntity loginWithGoogleOauth(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String authToken = userOAuthService.loginOAuthGoogle(request);
 
-        final ResponseCookie cookie = ResponseCookie.from("AUTH-TOKEN", authToken)
+        final ResponseCookie cookie = ResponseCookie.from("test", authToken)
                 .httpOnly(true)
                 .maxAge(7 * 24 * 3600)
                 .path("/")

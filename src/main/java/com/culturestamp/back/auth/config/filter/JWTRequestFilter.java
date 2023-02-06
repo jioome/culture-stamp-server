@@ -28,7 +28,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         Cookie[] cookies = request.getCookies();
         Cookie authCookie = cookies == null ? null : Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals("AUTH-TOKEN"))
+                .filter(cookie -> cookie.getName().equals("test"))
                 .findAny().orElse(null);
         Authentication authentication;
         if (authCookie != null && (authentication = jwtUtils.verifyAndGetAuthentication(authCookie.getValue())) != null) {
