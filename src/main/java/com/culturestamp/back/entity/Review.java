@@ -9,13 +9,15 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
-@ToString(exclude = "categoryId,userId")
+@ToString(exclude = {"category_id,user_id"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode( of = {"id","categoryId","userId"} )
+@EqualsAndHashCode( of = {"id","category_id","user_id"} )
 public class Review extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +34,7 @@ public class Review extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String content;
+
     @Column(name = "performed_date", nullable = false)
     private LocalDateTime performedDate;
 
@@ -42,6 +45,13 @@ public class Review extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @OneToMany(
+            mappedBy = "review",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = true
+    )
+    private List<Image> Images = new ArrayList<>();
 
     @Builder
     public Review(Long id, Category category, User user, String title, LocalDateTime performedDate,
@@ -79,5 +89,15 @@ public class Review extends BaseTimeEntity {
                 .rating(rating)
                 .content(content)
                 .price(price);
+    }
+
+    // Review에서 이미지 저장 처리 하기 위함
+    public void addImage( Image image ){
+        this.Images.add( image );
+
+        // 게시글에 이미지가 저장되어 있지 않은 경우
+        if( image.getReview()!=this ){
+            image.setReview(this); // 파일 저장
+        }
     }
 }
