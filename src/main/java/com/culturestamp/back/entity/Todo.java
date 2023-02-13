@@ -1,11 +1,9 @@
 package com.culturestamp.back.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,9 +12,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ColumnDefault;
 
-import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,7 +38,7 @@ public class Todo {
 	private User user;
 
 	@Builder
-	public Todo(Long id, String content, LocalDateTime date, int doneFlag, User user) {
+		public Todo(Long id, String content, LocalDateTime date, int doneFlag, User user) {
 		this.id = id;
 		this.content = content;
 		this.date = date;

@@ -101,8 +101,6 @@ class ReviewServiceTest {
 
         // when
         ReviewResponse actual = service.addReview(request);
-
-        // then
         assertEquals(1L, actual.getReviewId() );
     }
 

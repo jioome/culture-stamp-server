@@ -1,7 +1,6 @@
 package com.culturestamp.back.controller.request;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.culturestamp.back.entity.Todo;
 import com.culturestamp.back.entity.User;
@@ -13,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class TodoRequest {
+	private Long id;
 	private User user;
 	private String content;
 	private LocalDateTime date;
@@ -21,6 +21,7 @@ public class TodoRequest {
 
 	public Todo toEntity(TodoRequest todoRequest) {
 		return Todo.builder()
+			.id(todoRequest.id)
 			.user(todoRequest.user)
 			.content(todoRequest.content)
 			.date(todoRequest.date)

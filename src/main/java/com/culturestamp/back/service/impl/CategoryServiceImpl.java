@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.culturestamp.back.controller.request.CategoryRequest;
 import com.culturestamp.back.dto.CategoryResponse;
 import com.culturestamp.back.entity.Category;
+import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.repository.CategoryRepository;
 import com.culturestamp.back.service.CategoryService;
 
@@ -42,7 +43,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void removeCategory(Long categoryId){
-		categoryRepository.deleteById(categoryId);
+		final Category category =  categoryRepository.findById(categoryId).orElseThrow(IllegalArgumentException::new);
+		categoryRepository.delete(category);
+
 	}
 
 	@Override
