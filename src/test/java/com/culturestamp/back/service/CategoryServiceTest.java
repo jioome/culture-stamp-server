@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,25 +12,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.culturestamp.back.controller.request.CategoryRequest;
-import com.culturestamp.back.controller.request.TodoRequest;
 import com.culturestamp.back.dto.CategoryResponse;
-import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.entity.Category;
-import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.entity.Role;
-import com.culturestamp.back.entity.Todo;
 import com.culturestamp.back.entity.User;
 import com.culturestamp.back.repository.CategoryRepository;
-import com.culturestamp.back.repository.ReviewRepository;
 import com.culturestamp.back.repository.UserRepository;
 import com.culturestamp.back.service.impl.CategoryServiceImpl;
 
+@ActiveProfiles("test")
 @SpringBootTest
 public class CategoryServiceTest {
 	@Autowired
@@ -85,7 +77,7 @@ public class CategoryServiceTest {
 
 		//then
 		Category actual = repository.findAll().get(0);
-		System.out.println(actual.getCategoryId());
+		System.out.println(actual.getId());
 
 	}
 	@Test
@@ -113,13 +105,13 @@ public class CategoryServiceTest {
 		repository.save(category);
 
 		// when
-		CategoryResponse response = service.findCategory(category.getCategoryId());
-		System.out.println(category.getCategoryId());
+		CategoryResponse response = service.findCategory(category.getId());
+		System.out.println(category.getId());
 
 		// then
 		assertNotNull(response);
-		assertEquals( "Movie", response.getCategory_name());
-		assertEquals( 5L, response.getReview_count());
+		assertEquals( "Movie", response.getCategoryName());
+		assertEquals( 5L, response.getReviewCount());
 	}
 
 
@@ -129,10 +121,10 @@ public class CategoryServiceTest {
 		repository.save(category);
 
 		// when
-		service.removeCategory( category.getCategoryId() );
+		service.removeCategory( category.getId() );
 
 		// then
-		assertEquals( true, repository.findById(category.getCategoryId()).isEmpty() );
+		assertEquals( true, repository.findById(category.getId()).isEmpty() );
 	}
 
 	@Test
@@ -147,10 +139,10 @@ public class CategoryServiceTest {
 
 
 		// when
-		service.modifyCategory( category.getCategoryId(), categoryRequest );
+		service.modifyCategory( category.getId(), categoryRequest );
 
-		// then
-		Category changeCategory = repository.findById(category.getCategoryId()).orElseThrow( () -> new RuntimeException("존재 X todo ID = "+category.getCategoryId()) );
+		/// then
+		Category changeCategory = repository.findById(category.getId()).orElseThrow( () -> new RuntimeException("존재 X todo ID = "+category.getId()) );
 
 
 		assertEquals( "Movie1323", changeCategory.getCategoryName() );

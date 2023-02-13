@@ -9,14 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Tag {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "tag_id")
@@ -29,11 +31,10 @@ public class Tag {
 	@JoinColumn(name="review_id")
 	private Review review;
 
-
-
-	public Tag() {
-
+	@Builder
+	public Tag(Long id, String tagName, Review review) {
+		this.id = id;
+		this.tagName = tagName;
+		this.review = review;
 	}
-
-
 }

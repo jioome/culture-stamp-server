@@ -101,8 +101,6 @@ class ReviewServiceTest {
 
         // when
         ReviewResponse actual = service.addReview(request);
-
-        // then
         assertEquals(1L, actual.getReviewId() );
     }
 
@@ -130,7 +128,7 @@ class ReviewServiceTest {
         var reviews = service.findReviews(pageable);
 
         // then
-        assertEquals(3, reviews.size() );
+        assertEquals(3, reviews.getSize() );
     }
     
     @Test
