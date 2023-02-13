@@ -7,7 +7,10 @@ import com.culturestamp.back.entity.Review;
 import com.culturestamp.back.repository.ReviewRepository;
 import com.culturestamp.back.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 ;
@@ -22,7 +25,7 @@ public class ReviewServiceImpl implements ReviewService {
     final private ReviewRepository repository;
 
     @Override
-    public List<ReviewResponse> findReviews(Pageable pageable) {
+    public List<ReviewResponse> findReviews(@PageableDefault(size = 10, sort = "" ) Pageable pageable) {
         return repository.findAllPagingBy(pageable).stream().collect(Collectors.toList());
     }
 
