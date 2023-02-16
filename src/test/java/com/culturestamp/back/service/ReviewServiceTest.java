@@ -76,7 +76,9 @@ class ReviewServiceTest {
                 .performedDate(LocalDateTime.now())
                 .user(user)
                 .build();
+        repository.save(review);
     }
+
 
     @Test
     void testMock객체생성(){
@@ -128,9 +130,9 @@ class ReviewServiceTest {
         var reviews = service.findReviews(pageable);
 
         // then
-        assertEquals(3, reviews.size() );
+        assertEquals(3, reviews.getSize() );
     }
-    
+
     @Test
     void test리뷰_단건_조회() {
         // given

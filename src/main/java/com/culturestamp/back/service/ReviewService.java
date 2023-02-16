@@ -10,7 +10,7 @@ import org.springframework.data.domain.Slice;
 import java.util.List;
 
 public interface ReviewService {
-    List<ReviewResponse> findReviews(Pageable pageable);
+    Slice<ReviewResponse> findReviews(Pageable pageable);
     ReviewResponse findReview(Long reviewId);
     ReviewResponse addReview(ReviewRequest reviewRequest);
     ReviewResponse modifyReview(Long reviewId, ReviewEditorRequest reviewRequest);

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ReviewController {
 
     // 리뷰 아이디, 썸네일(대표이미지)
     @GetMapping()
-    public ResponseEntity<List<ReviewResponse>> reviewList(@PageableDefault(size=20) Pageable pageable){
+    public ResponseEntity<Slice<ReviewResponse>> reviewList(@PageableDefault(size=20) Pageable pageable){
         return ResponseEntity.ok().body( service.findReviews(pageable) );
     }
 

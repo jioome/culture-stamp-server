@@ -24,8 +24,8 @@ public class ReviewServiceImpl implements ReviewService {
     final private ReviewRepository repository;
 
     @Override
-    public List<ReviewResponse> findReviews(@PageableDefault(size = 10, sort = "" ) Pageable pageable) {
-        return repository.findAllPagingBy(pageable).stream().collect(Collectors.toList());
+    public Slice<ReviewResponse> findReviews(@PageableDefault(size = 10, sort = "" ) Pageable pageable) {
+        return repository.findAllPagingBy(pageable);
     }
 
     @Override

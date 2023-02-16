@@ -3,6 +3,9 @@ spring:
     init:
       mode: always
       data-locations: classpath:data.sql
+  profiles:
+      include: oauth
+
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     defer-datasource-initialization: true # hibernate가 초기화되기 전 user-data.sql 실행하는 것을 방지
@@ -22,6 +25,11 @@ spring:
     url: jdbc:mysql://localhost:3306/culturestamp-local?characterEncoding=utf8
     username: root
     password: 1234
+
+app :
+  jwtSecret : 7688ldhskljdlkjsakdapskfjdldldlpdkkkdd;;;kdkddld;;ssldld;j228092889
+  googleClientId : 398701196846-1n8sr22rc55etti1cedf9qvnaovpfb4q.apps.googleusercontent.com
+
 ---
 # test 환경
 # spring:
@@ -35,7 +43,7 @@ spring:
 #   #      data-locations: classpath:data-for-h2.sql # 시작할때 실행시킬 script
 #   jpa:
 #     database-platform: org.hibernate.dialect.H2Dialect
-#     defer-datasource-initialization: true # hibernate가 초기화되기 전 user-data.sql 실행하는 것을 방지
+#     defer-datasource-initialization: true # hibernate가 초기화되기 전 data.sql 실행하는 것을 방지
 #     #  show-sql: true
 #     hibernate:
 #       format_sql: true
