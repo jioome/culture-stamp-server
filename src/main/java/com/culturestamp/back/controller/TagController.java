@@ -2,13 +2,23 @@ package com.culturestamp.back.controller;
 
 import com.culturestamp.back.controller.request.TagRequest;
 import com.culturestamp.back.dto.CommonResponse;
+import com.culturestamp.back.dto.ReviewResponse;
 import com.culturestamp.back.dto.TagResponse;
+import com.culturestamp.back.entity.Tag;
+import com.culturestamp.back.entity.TagCount;
 import com.culturestamp.back.service.TagService;
+import com.culturestamp.back.service.impl.TagServiceImpl;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Slf4j
@@ -25,15 +35,13 @@ public class TagController {
 	}
 
 	@GetMapping()
-	public ResponseEntity<List> todoAll() {
-		return ResponseEntity.ok(service.findAllTag());
+	public ResponseEntity<Slice<TagResponse>> tagAll(@PageableDefault(size=20) Pageable pageable){
+		return ResponseEntity.ok().body(service.findAllTag(pageable));
 	}
 
 	@GetMapping("/{tagId}")
-	public ResponseEntity<?> tagDetails(@PathVariable(name = "tagId") Long tagId) throws Exception {
-		// return ResponseEntity.ok(service.findTodo(todoId));
-		TagResponse tagResponse = service.findTag(tagId);
-		return ResponseEntity.ok(new CommonResponse<>("SUCCESS",tagResponse));
+	public ResponseEntity<Tag> tagDetails(@PathVariable Long tagId){
+		return ResponseEntity.ok(service.findTag(tagId));
 	}
 
 	@DeleteMapping("/{tagId}")
@@ -42,10 +50,15 @@ public class TagController {
 		return ResponseEntity.ok().build();
 	}
 
-	@PatchMapping("/{tagId}")
-	public ResponseEntity<TagResponse> tagModify(@PathVariable Long tagId ,@RequestBody TagRequest tagRequest) throws Exception {
-		return ResponseEntity.ok(service.modifyTag(tagId,tagRequest));
+	@GetMapping("/search")
+	public ResponseEntity<List> search(String keyword){
+		System.out.println(service.search(keyword));
+		return ResponseEntity.ok(service.search(keyword));
 	}
 
+	@GetMapping("/top")
+	public ResponseEntity<List<TagCount>> topTagCount(){
+		return ResponseEntity.ok(service.topTag());
+	}
 
 }
