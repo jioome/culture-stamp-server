@@ -9,10 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,24 +20,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Data
-public class Tag {
+public class TagCount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tag_id")
+	@Column(name = "count_id")
 	private Long id;
 
 	@Column(name = "tag_name")
 	private String tagName;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="review_id")
-	private Review review;
+	@Column(name = "tag_count")
+	private Integer tagCount = 1;
 
 	@Builder
-	public Tag(Long id, String tagName, Review review) {
+	public TagCount(Long id, String tagName, Integer tagCount) {
 		this.id = id;
 		this.tagName = tagName;
-		this.review = review;
+		this.tagCount = tagCount;
 	}
 }
