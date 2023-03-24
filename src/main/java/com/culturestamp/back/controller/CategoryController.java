@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,14 @@ import java.util.stream.Collectors;
 public class CategoryController {
 	//
 	private final CategoryService service;
+
+	// test for principal
+	@GetMapping("principal/{categoryId}")
+	public ResponseEntity<CategoryResponse>  categoryDetailsPrincipal(Principal principal, @PathVariable(name = "categoryId") Long categoryId) throws Exception {
+		System.out.println("principal.getName() :" + principal.getName());
+		return ResponseEntity.ok().body( service.findCategory(categoryId) );
+	}
+
 
 	@PostMapping()
 	public ResponseEntity<CategoryResponse> categoryAdd(@RequestBody CategoryRequest categoryRequest){
